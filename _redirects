@@ -1,0 +1,2 @@
+/open-lesson.html /open-lesson.html 200
+/:splat /open-lesson.html 200! host=web.aireaktor.ru
