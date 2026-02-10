@@ -156,7 +156,7 @@ button{font-family:inherit;border:none;cursor:pointer;background:none}
 /* =============================================
    HERO
    ============================================= */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 24px 80px;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at center, rgba(255,92,157,0.15) 0%, transparent 50%)}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,26,0.6) 0%,rgba(15,17,26,0.8) 50%,var(--bg) 100%)}
 .hero>*:not(.hero-bg):not(.orb){position:relative;z-index:1}
@@ -164,8 +164,8 @@ button{font-family:inherit;border:none;cursor:pointer;background:none}
 .hero h1 .word-white{color:#fff}
 .hero h1 .word-pink{color:var(--primary);filter:drop-shadow(0 0 30px rgba(255,92,157,0.4))}
 .hero-subtitle{font-family:var(--font-display);font-size:clamp(16px,2.5vw,22px);font-weight:500;color:var(--text-dim);margin-bottom:12px;text-transform:uppercase;letter-spacing:2px}
-.hero-desc{font-size:17px;line-height:1.7;color:var(--text-dim);max-width:620px;margin:0 auto 32px}
-.hero-chips{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.hero-desc{font-size:14px;line-height:1.55;color:var(--text-dim);max-width:620px;margin:0 auto 24px}
+.hero-chips{display:grid;grid-template-columns:repeat(2,auto);gap:8px 12px;justify-content:center;margin-bottom:24px}
 .hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:12px}
 .hero-installment{font-size:14px;color:var(--text-muted);margin-bottom:40px}
 .hero-proof{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;padding:16px 0;border-top:1px solid rgba(255,255,255,0.06)}
@@ -443,12 +443,12 @@ button{font-family:inherit;border:none;cursor:pointer;background:none}
    ============================================= */
 .floating-cta{position:fixed;bottom:24px;right:24px;z-index:998;opacity:0;transform:translateY(20px) scale(0.9);transition:all .4s var(--ease);pointer-events:none}
 .floating-cta.visible{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
-.floating-cta a{display:flex;align-items:center;gap:10px;padding:16px 28px;background:var(--primary);color:#fff;border-radius:999px;font-family:var(--font-display);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;box-shadow:0 8px 32px rgba(255,92,157,0.4),0 0 0 1px rgba(255,92,157,0.3);transition:all .3s}
-.floating-cta a:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,92,157,0.5),0 0 0 1px rgba(255,92,157,0.4)}
+.floating-cta button{display:flex;align-items:center;gap:10px;padding:16px 28px;background:var(--primary);color:#fff;border-radius:999px;font-family:var(--font-display);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;box-shadow:0 8px 32px rgba(255,92,157,0.4),0 0 0 1px rgba(255,92,157,0.3);transition:all .3s;border:none;cursor:pointer}
+.floating-cta button:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,92,157,0.5),0 0 0 1px rgba(255,92,157,0.4)}
 .floating-cta .price{padding:4px 10px;background:rgba(0,0,0,0.2);border-radius:999px;font-size:12px;font-weight:600}
 @media(max-width:640px){
   .floating-cta{bottom:16px;right:16px;left:16px}
-  .floating-cta a{width:100%;justify-content:center}
+  .floating-cta button{width:100%;justify-content:center}
 }
 
 /* =============================================
@@ -474,7 +474,7 @@ button{font-family:inherit;border:none;cursor:pointer;background:none}
   .author-photo{max-width:320px;margin:0 auto}
 }
 @media(max-width:480px){
-  .hero-chips{flex-direction:column;align-items:center}
+  .hero-chips{grid-template-columns:1fr;gap:8px}
   .hero-proof{flex-direction:column;align-items:center;gap:8px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -492,9 +492,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Navigation removed per design update -->
 
 <!-- LOGO HEADER -->
-<header style="padding:20px 24px;text-align:center;position:relative;z-index:10">
+<header class="site-header" style="padding:20px 24px;position:relative;z-index:10">
   <a href="/" style="font-family:var(--font-display);font-size:20px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;text-decoration:none">РЕАКТОР<span style="color:var(--primary)">.</span></a>
 </header>
+<style>
+/* Desktop: logo left-aligned */
+@media(min-width:769px){
+  .site-header{text-align:left;max-width:var(--max-w);margin:0 auto}
+}
+/* Mobile: centered */
+@media(max-width:768px){
+  .site-header{text-align:center}
+}
+</style>
 
 <!-- ============================================
      HERO  
@@ -505,7 +515,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="orb orb-pink" style="width:700px;height:700px;top:-200px;left:-200px"></div>
   <div class="orb orb-cyan" style="width:500px;height:500px;bottom:-100px;right:-150px"></div>
 
-  <div class="badge badge-pink" style="margin-bottom:32px">
+  <div class="badge badge-pink" style="margin-bottom:16px">
     <span style="width:6px;height:6px;background:var(--primary);border-radius:50%;animation:blink 2s infinite"></span>
     Освой главный навык 2026
   </div>
@@ -1387,9 +1397,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="pricing-amount neon-text" id="priceCounter">29 900 ₽</div>
         <div class="pricing-installment">Рассрочка без % — от <strong>2 490 ₽/мес</strong></div>
         <div style="margin-bottom:20px">
-          <a href="https://edu.plaan.ai/reactor" class="btn btn-primary btn-lg btn-full neon-pulse" id="mainCta" target="_blank" style="max-width:500px;margin:0 auto">
+          <button class="btn btn-primary btn-lg btn-full neon-pulse booking-popup-trigger" id="mainCta" style="max-width:500px;margin:0 auto">
             ЗАБРОНИРОВАТЬ МЕСТО
-          </a>
+          </button>
           <p class="microcopy">🛡️ Гарантия возврата · Безопасная оплата · Рассрочка 0%</p>
         </div>
         <!-- Seats progress bar -->
@@ -1612,13 +1622,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       🔥 Осталось мест: <strong>12 из 25</strong>
     </p>
     <div class="fade-up">
-      <a href="https://edu.plaan.ai/reactor" class="btn btn-primary btn-lg" target="_blank">
+      <button class="btn btn-primary btn-lg booking-popup-trigger">
         Забронировать место
-      </a>
+      </button>
       <p class="microcopy">🛡️ Гарантия возврата · Безопасная оплата · Рассрочка 0%</p>
     </div>
   </div>
 </section>
+
+<!-- ============================================
+     BOOKING POPUP (Plaan Widget)
+     ============================================ -->
+<div class="booking-overlay" id="bookingOverlay">
+  <div class="booking-popup">
+    <button class="booking-close" id="bookingClose" aria-label="Закрыть">✕</button>
+    <div class="booking-widget-container" id="bookingWidgetContainer">
+      <!-- Plaan Widget Script - renders form here -->
+      <script id="b01a74939ac9a964653ce93f6df2899c55f4d7c0" src="https://edu.plaan.ai/pl/lite/widget/script?id=1558393"></script>
+    </div>
+  </div>
+</div>
+
+<style>
+/* BOOKING POPUP STYLES */
+.booking-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility .3s}
+.booking-overlay.show{opacity:1;visibility:visible;pointer-events:all}
+.booking-popup{background:var(--bg-card);border:2px solid rgba(255,92,157,0.3);border-radius:var(--radius-xl);padding:16px;max-width:900px;width:90vw;max-height:70vh;position:relative;animation:popIn .4s var(--ease-out)}
+@media(max-width:768px){.booking-popup{max-width:95vw;width:95vw}}
+.booking-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-muted);font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;z-index:10}
+.booking-close:hover{background:rgba(255,92,157,0.1);color:var(--primary);border-color:rgba(255,92,157,0.3)}
+.booking-widget-container{}
+/* Make widget form readable on dark background */
+.booking-widget-container iframe{border-radius:12px}
+</style>
 
 <!-- ============================================
      FOOTER
@@ -1637,7 +1673,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         ОГРНИП 315 435 000 018 420
       </div>
       <div>
-        Email: <a href="mailto:d.ffring@gmail.com" style="color:var(--text-dim)">d.ffring@gmail.com</a><br>
+        Email: <a href="/cdn-cgi/l/email-protection#d7b3f9b1b1a5beb9b097b0bab6bebbf9b4b8ba" style="color:var(--text-dim)"><span class="__cf_email__" data-cfemail="5e3a7038382c3730391e39333f3732703d3133">[email&#160;protected]</span></a><br>
         Банк: АО «ТИНЬКОФФ БАНК»<br>
         ИНН банка: 7710140679<br>
         БИК банка: 044525974<br>
@@ -1666,9 +1702,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      FLOATING CTA
      ============================================ -->
 <div class="floating-cta" id="floatingCta">
-  <a href="#pricing">
+  <button class="booking-popup-trigger" style="display:flex;align-items:center;gap:10px;padding:16px 28px;background:var(--primary);color:#fff;border-radius:999px;font-family:var(--font-display);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;box-shadow:0 8px 32px rgba(255,92,157,0.4),0 0 0 1px rgba(255,92,157,0.3);transition:all .3s;border:none;cursor:pointer">
     🚀 Забронировать место
-  </a>
+  </button>
 </div>
 
 <!-- ============================================
@@ -1690,7 +1726,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ============================================
      INLINE JAVASCRIPT
      ============================================ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ============================================
    SCROLL REVEAL (IntersectionObserver)
    Only for NON-hero elements (hero uses CSS @keyframes)
@@ -2036,6 +2072,57 @@ exitOverlay.addEventListener('click', (e) => {
       this.closest('.calc-item').style.borderColor = this.checked ? 'rgba(255,92,157,0.4)' : 'var(--border)';
       this.closest('.calc-item').style.background = this.checked ? 'rgba(255,92,157,0.03)' : 'var(--bg-card)';
     });
+  });
+})();
+
+/* ============================================
+   BOOKING POPUP (Plaan Widget)
+   ============================================ */
+(function() {
+  const bookingOverlay = document.getElementById('bookingOverlay');
+  const bookingClose = document.getElementById('bookingClose');
+  const bookingContainer = document.getElementById('bookingWidgetContainer');
+  const triggers = document.querySelectorAll('.booking-popup-trigger');
+  
+  if (!bookingOverlay || !triggers.length) return;
+  
+  // Open popup
+  function openBookingPopup() {
+    bookingOverlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    
+    // Trigger widget initialization if needed
+    if (window.PlaanWidget && typeof window.PlaanWidget.init === 'function') {
+      window.PlaanWidget.init();
+    }
+  }
+  
+  // Close popup
+  function closeBookingPopup() {
+    bookingOverlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+  
+  // Trigger buttons
+  triggers.forEach(btn => {
+    btn.addEventListener('click', openBookingPopup);
+  });
+  
+  // Close button
+  bookingClose.addEventListener('click', closeBookingPopup);
+  
+  // Close on overlay click
+  bookingOverlay.addEventListener('click', (e) => {
+    if (e.target === bookingOverlay) {
+      closeBookingPopup();
+    }
+  });
+  
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && bookingOverlay.classList.contains('show')) {
+      closeBookingPopup();
+    }
   });
 })();
 
