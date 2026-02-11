@@ -1,2 +1,5 @@
-/open-lesson.html /open-lesson.html 200
-/:splat /open-lesson.html 200! host=web.aireaktor.ru
+# Main site: aireaktor.ru → index.html (default, no rules needed)
+
+# web.aireaktor.ru subdomain
+/img/* /web/img/:splat 200 host=web.aireaktor.ru
+/* /web/index.html 200! host=web.aireaktor.ru
